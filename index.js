@@ -2,6 +2,8 @@
 const inquirer = require('inquirer');
 // fs import
 const fs = require('fs');
+const {Square, Triangle, Circle} = require('./lib/shapes');
+
 // Questions user needs to answer in command line
 function prompts() {
     inquirer
@@ -34,18 +36,29 @@ function prompts() {
         },
     ])
     .then((response) => {
-        createNewFile("logo.svg", response);
-        // fs.writeFile('README.md', readMeData, (err) =>
-        //     err ? console.error(err) : console.log('Success! Your logo has been generated.')
-        //     )
+        let svgData;
+        switch (response.shape) {
+            case "Triangle":
+                const triangle = new Triangle(response.shapeColor, response.text, response.textColor);
+                svgData = triangle.render();
+                break;
+            case "Circle":
+                const circle = new Circle(response.shapeColor, response.text, response.textColor);
+                svgData = circle.render();
+                break;
+            case "Square":
+                const square = new Square(response.shapeColor, response.text, response.textColor);
+                svgData = square.render();
+                break; 
+            default: 
+            console.log("Invalid Input")
+            break;    
+        }
+
+        fs.writeFile('logo.svg', svgData, (err) =>
+            err ? console.error(err) : console.log('Success! Your SVG has been generated.')
+        );
     });
 };
 
 prompts();
-
-function createNewFile(fileName, response) {
-    let string = "";
-    string =  '<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">';
-    string += `${response.shape}`;
-    string += "<g>"
-}
