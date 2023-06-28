@@ -19,6 +19,11 @@ User must clone this repo, as well as use NodeJs to run the index.js file in the
 ## Usage
 First, run the index.js file in Nodejs in your local terminal. Answer the 4 questions. Once answered, a file will be created named "logo.svg" that contains the SVG creation based off of user's input. 
 
+<img src="./examples/svgvideo.gif">
+
+View the video here: [Screencastify](https://drive.google.com/file/d/1Be_NYQnRdujgjoIdnG8bomr4ez8c_h5L/view)
+
+
 ## License
 This project is covered under the MIT license. To learn more, please click the license badge at the top of the page.
 
